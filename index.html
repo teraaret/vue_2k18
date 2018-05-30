@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>vue_project_2018</title>
+    <link rel="shortcut icon" href="/dist/tree.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <router-link class="router-link" to="/">+ index</router-link>
+            <router-link class="router-link" to="/about">+ about</router-link>
+        </nav>
+        <p>{{test}}</p>
+        <hr>
+        <router-view></router-view>
+    </div>
+    <script src="/dist/build.js"></script>
+</body>
+
+</html>
