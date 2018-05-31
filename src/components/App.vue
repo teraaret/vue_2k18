@@ -1,11 +1,13 @@
-<template lang="pug">
-    #app
-        h1 app
-        p App msg (emit from Input through Example): {{message_from_input}}
-        p
-            label(for="show_childs") Show childs?
-            input(type="checkbox" v-model="show_childs" id="show_childs")
-        temp-example(v-if="show_childs" @upd_app_msg="update_example_message")
+<template>
+    <div id="app">
+        <h1>app</h1> 
+        <p>App msg (emit from Input through Example): {{message_from_input}}</p> 
+        <p>
+            <label for="show_childs">Show childs?</label>
+            <input type="checkbox" v-model="show_childs" id="show_childs">
+        </p>
+        <temp-example v-if="show_childs" @upd_app_msg="update_example_message"></temp-example>
+    </div>
 </template>
 
 <script>

@@ -2,31 +2,28 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
-import App from './App.vue'
-import Example from './Example.vue'
-import About from './About.vue'
+import App from './components/App.vue'
+import Example from './components/Example.vue'
+import About from './components/About.vue'
+import Posts from './components/Posts.vue'
+import Post from './components/Post.vue'
 
 import Style from './style/style.less'
-import Icon from './img/tree.ico'
+import FavIcon from './img/tree.ico'
 
 var router = new VueRouter({
     routes: [
         { path: '/', component: App },
         { path: '/index', component: App },
-        { path: '/about', component: About, props: {test: "123", foo_change_lorem: function() {alert("clicked!")} } },
+        { path: '/example', component: Example },
+        { path: '/about', component: About, props: {test: "prop from router on main.js"} },
+        { path: '/posts', component: Posts },
+        { path: '/posts/:index', name: 'post', component: Post, props: true },
     ]
 })
 
 new Vue({
     el: '#app',
     router: router,
-    data: {
-        test: "lorem"
-    },
-    methods: {
-        change_lorem: function() {
-            alert("changed!");
-        }
-    }
 //    render: h => h(App)
 })
