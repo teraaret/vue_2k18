@@ -25,8 +25,8 @@
         },
         methods: {
             checkAuth() {
-                if ( Auth.check(this) ) {
-                    this.user = Auth.check(this).split("=")[1];
+                if ( Auth.checkAuth(this) ) {
+                    this.user = Auth.getUser(this);
                 } else {
                     this.user = false;
                 }

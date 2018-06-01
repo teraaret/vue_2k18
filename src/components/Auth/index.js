@@ -15,7 +15,9 @@ export default {
                         if ( password == value.password ) { // Если нашли логин, сравниваем пароль
                             found = true;
                             context.$cookie.set(cookie_name, login, 1);
-                            router.push('/');
+                            context.authenticated = true;
+                            context.a_user = document.cookie.split("=")[1];
+//                            router.push('/');
                         }
                     }
                 });
@@ -27,19 +29,21 @@ export default {
                 console.log(error);
             })
     },
-    check(context) {
+    checkAuth(context) {
         if (document.cookie) {
-            context.error = 'cookie exist: ' + document.cookie;
-            return document.cookie;
-        } else {
-            context.error = 'cookie NOT exist';
-            return false;
+            return true;
+        }
+    },
+    getUser() {
+        if (document.cookie) {
+            return document.cookie.split("=")[1];
         }
     },
     logout(context) {
         if ( document.cookie ) {
             context.$cookie.delete(cookie_name);
-            router.push('/');
+            context.authenticated = false;
+//            router.push('/');
         }
     }
 }

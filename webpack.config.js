@@ -45,7 +45,10 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         noInfo: true,
-        overlay: true
+        overlay: true,
+//        allowedHosts: [ 'ar.ar' ],
+//        port: 9000,
+//        host: 0.0.0.0
     },
     performance: { hints: false },
     devtool: '#eval-source-map',

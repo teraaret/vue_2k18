@@ -1,14 +1,18 @@
 <template>
     <div id="app">
         <h1>Auth page</h1>
-        <p>login:</p>
-        <input type="text" v-model="user.login" @keyup.enter="login()">
-        <p>Password:</p>
-        <input type="password" v-model="user.password" @keyup.enter="login()">
-        <p>{{error}}</p>
-        <button class="green" @click="login()">login</button>
-        <button class="blue" @click="check()">check</button>
-        <button class="red" @click="logout()">logout</button>
+        <div v-if="!authenticated">
+            <p>login:</p>
+            <input type="text" v-model="user.login" @keyup.enter="login()">
+            <p>Password:</p>
+            <input type="password" v-model="user.password" @keyup.enter="login()">
+        </div>
+        <div v-if="authenticated">
+            <p>Вы вошли как {{a_user}}</p>
+        </div>
+        <p v-if="!authenticated">{{error}}</p>
+        <button v-if="!authenticated" class="green" @click="login()">login</button>
+        <button v-if="authenticated" class="red" @click="logout()">logout</button>
     </div>
 </template>
 
@@ -24,26 +28,32 @@
                     login: "",
                     pass: ""
                 },
-                error: " "
+                error: " ",
+                authenticated: false,
+                a_user: "1"
             }
         },
         methods: {
             login() {
-                if (this.user.login == "" || this.user.password == "") {
+                if ((this.user.login == "") || (this.user.password == "")) {
                     this.error = "Fill the inputs!"
                 } else {
                     Auth.login(this, this.user.login, this.user.password);
+                    this.user.login = "";
+                    this.user.password = "";
                 }
             },
-            check() {
-                Auth.check(this);
-            },
             logout() {
-                Auth.logout(this);
+                if (Auth.logout(this)) {
+                    this.authenticated = false;
+                } 
             }
         },
         created() {
-            console.log(this);
+            if (Auth.checkAuth(this)) {
+                this.authenticated = true;
+                this.a_user = Auth.getUser();
+            }
         }
     }
 

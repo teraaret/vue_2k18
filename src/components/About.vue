@@ -31,7 +31,7 @@
         },
         methods: {
             testAuth() {
-                if ( Auth.check(this) ) {
+                if ( Auth.checkAuth(this) ) {
                     this.auth = true;
                 }                
             },
