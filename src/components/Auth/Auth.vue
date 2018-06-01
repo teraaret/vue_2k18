@@ -19,7 +19,7 @@
 
 <script>
     
-    import Auth from '../Auth'
+    import Auth from '../Auth/auth.js'
     
     export default {
         data() {

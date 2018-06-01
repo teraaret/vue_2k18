@@ -4,6 +4,7 @@
         <p>Test: {{test}}</p>
         <hr>
         <p>{{about}}</p>
+        <textarea v-model="about" v-on:keyup="editAbout()"></textarea>
     </div>
 </template>
 
@@ -16,26 +17,17 @@
         props: ["test"],
         data() {
             return {
-                endpoint: "/src/data/about.txt",
                 about: ""
             }
         },
         methods: {
-            getAbout() {
-                axios.get(this.endpoint)
-                .then(response => {
-                    this.about = response.data;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-            },
-            save() {
+            editAbout() {
+                this.$store.dispatch('editAbout', this.about);
             }
         },
         created() {
-            this.getAbout();
-        }
+            this.about = this.$store.getters.getAbout;
+        },
     }
 
 </script>

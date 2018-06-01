@@ -1,6 +1,5 @@
-import router from '../../router'
+import router from '../../router/Vue.router.js'
 import axios from 'axios'
-import $ from 'jquery'
 
 var cookie_name = 'vue_2k16';
 
@@ -10,7 +9,7 @@ export default {
             .then(response => {
                 var users = response.data;
                 var found = false;
-                $.each(users, function (index, value) {
+                users.forEach(function(value, index) {
                     if ( login == value.login ) { // Находим логин
                         if ( password == value.password ) { // Если нашли логин, сравниваем пароль
                             found = true;
