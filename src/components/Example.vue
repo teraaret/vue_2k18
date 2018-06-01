@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <h2>example</h2>
+        <h2>Example (3 уровень)</h2>
         <p>Tumbler: {{tumbler}}</p>
-        <p>Example msg (emit from Input): {{message_from_input}}</p>
+        <p>Example msg (передано из Input): {{message_from_input}}</p>
         <temp-input 
             :transfer="tr_message" 
             @tumbler_on="tumbler_on" 

@@ -1,16 +1,9 @@
 <template>
     <div id="app">
         <h1>About page</h1>
-        <p><strong>Auth: {{auth}}</strong></p>
-        <div v-if="auth">
-            <p>Test: {{test}}</p>
-            <hr>
-            <p>{{about}}</p>
-            <textarea type="text" v-model="about" v-on:keyup.ctrl.enter="save()"></textarea>
-        </div>
-        <div v-if="!auth">
-            <p>You are not allowed to show this secret information, go away!</p>
-        </div>
+        <p>Test: {{test}}</p>
+        <hr>
+        <p>{{about}}</p>
     </div>
 </template>
 
@@ -18,23 +11,16 @@
 <script>
 
     import axios from "axios";
-    import Auth from "./Auth";
     
     export default {
         props: ["test"],
         data() {
             return {
-                auth: false,
                 endpoint: "/src/data/about.txt",
                 about: ""
             }
         },
         methods: {
-            testAuth() {
-                if ( Auth.checkAuth(this) ) {
-                    this.auth = true;
-                }                
-            },
             getAbout() {
                 axios.get(this.endpoint)
                 .then(response => {
@@ -48,7 +34,6 @@
             }
         },
         created() {
-            this.testAuth();
             this.getAbout();
         }
     }

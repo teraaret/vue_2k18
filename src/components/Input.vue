@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <h3>Input</h3>
-        <p>Prop from Example: {{transfer}}</p>
+        <h3>Input (4 уровень)</h3>
+        <p>Передано из Example: {{transfer}}</p>
         <hr>
         <p>Input msg: {{message}}</p>
         <hr>

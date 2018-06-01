@@ -16,8 +16,10 @@ export default {
                             found = true;
                             context.$cookie.set(cookie_name, login, 1);
                             context.authenticated = true;
+                            context.user.login = "";
+                            context.user.password = "";
                             context.a_user = document.cookie.split("=")[1];
-//                            router.push('/');
+                            router.push('/');
                         }
                     }
                 });
@@ -43,7 +45,7 @@ export default {
         if ( document.cookie ) {
             context.$cookie.delete(cookie_name);
             context.authenticated = false;
-//            router.push('/');
+            router.push('/');
         }
     }
 }

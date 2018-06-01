@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <h1>app</h1> 
-        <p>App msg (emit from Input through Example): {{message_from_input}}</p> 
+        <h1>App (2 уровень)</h1> 
+        <p>App msg (передано из Example): {{message_from_input}}</p> 
         <p>
             <label for="show_childs">Show childs?</label>
             <input type="checkbox" v-model="show_childs" id="show_childs">

@@ -39,13 +39,12 @@
                     this.error = "Fill the inputs!"
                 } else {
                     Auth.login(this, this.user.login, this.user.password);
-                    this.user.login = "";
-                    this.user.password = "";
                 }
             },
             logout() {
                 if (Auth.logout(this)) {
                     this.authenticated = false;
+                    this.a_user = "";
                 } 
             }
         },
@@ -76,11 +75,12 @@
         }
         button {
             width: 214px;
-            display: block;
+            display: inline-block;
             border: none;
             color: white;
             cursor: pointer;
             padding: 10px;
+            margin-top: 10px;
             margin-bottom: 4px;
             &.green {
                 background-color: forestgreen;
