@@ -8,8 +8,13 @@
             v-bind:key="Math.random(999)"
             :to="{ name: 'post', params: { index: post.id } }" >{{post.title}}</router-link>
         </p>
-        <h2># {{index}} {{post.title}}</h2>
-        <p>{{post.text}}</p>
+        <div v-if="post">
+            <h2># {{post.id}} {{post.title}}</h2>
+            <p>{{post.text}}</p>
+        </div>
+        <div v-if="!post">
+            <p>Post not found</p>
+        </div>
     </div>
 </template>
 

@@ -7,6 +7,8 @@ import Example from '../components/Example.vue'
 import Posts from '../components/Posts.vue'
 import Post from '../components/Post.vue'
 import About from '../components/About.vue'
+import Page404 from '../components/Page404.vue'
+
 import Auth from '../components/Auth/Auth'
 
 export default new VueRouter({
@@ -17,5 +19,6 @@ export default new VueRouter({
         { path: '/posts/:index', name: 'post', component: Post, props: true },
         { path: '/about', component: About, props: {test: "prop from router on main.js"} },
         { path: '/auth', component: Auth },
+        { path: '*', component: Page404 },
     ]
 })
