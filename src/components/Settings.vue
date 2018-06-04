@@ -2,12 +2,12 @@
     <div id="app">
         <h1>Settings</h1>
         <span>BG color:</span>
-        <select v-model="color">
-            <option value="white">White</option>
-            <option value="black">Black</option>
-        </select>
-        {{color}}
-        <button @click="save()">Save</button>
+        <h2>Color:</h2>
+        <div v-for="color in radio_color">
+            <label>{{color}}: 
+                <input type="radio" name="color" :value="color" @change=save(color)>
+            </label>
+        </div>
     </div>
 </template>
 
@@ -15,18 +15,18 @@
 <script>
     
     import router from '../router/Vue.router.js'
+    import settings from '../settings/settings.js'
     
     export default {
         data() {
             return {
-                color: 'na'
+                radio_color: ["white","black","wheat"]
             }
         },
         methods: {
-            save() {
-//                this.$cookie.set('bg_color', this.color, 1);
-                this.$store.dispatch('editColor', this.color);
-                router.push('/');
+            save(color) {
+                this.$store.dispatch('editColor', color);
+                settings.set(this);
             }
         },
         created() {

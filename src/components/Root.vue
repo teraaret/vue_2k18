@@ -22,6 +22,7 @@
     import img_logo from "../img/logo.png"
     import Auth from './Auth/auth.js'
     import router from '../router/Vue.router.js'
+    import settings from '../settings/settings.js'
     
     export default {
         data() {
@@ -48,8 +49,7 @@
         watch: {
             '$route' () { // Этот скрипт следит за обновлением URL
                 this.checkAuth();
-                var color = this.$store.getters.getColor;
-                document.getElementsByTagName("BODY")[0].style.backgroundColor = color;
+                settings.set(this);
             }
         }
     }
@@ -59,9 +59,7 @@
 
 <style scoped>
     #app {
-        margin: 0;
-        padding: 0;
-        padding-bottom: 20px;
+        margin: 0 auto;
         text-align: center;
     }
     
